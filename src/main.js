@@ -54,6 +54,7 @@ let state = null;
 
 function show(id) {
   document.querySelectorAll(".screen").forEach((s) => s.classList.toggle("active", s.id === `screen-${id}`));
+  document.body.dataset.screen = id;
   window.scrollTo(0, 0);
 }
 

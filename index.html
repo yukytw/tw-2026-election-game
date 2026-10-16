@@ -29,10 +29,6 @@
         <button id="btn-start" class="btn primary big">開始挑戰</button>
         <p class="best" id="best-score" hidden></p>
       </div>
-      <footer class="foot">
-        <button class="link" data-open="credits">照片授權與資料來源</button>
-        <p class="disclaimer">本遊戲為非營利趣味測驗，與任何政黨、候選人無關，不構成任何支持或反對之表示。</p>
-      </footer>
     </section>
 
     <!-- 遊戲畫面 -->
@@ -74,9 +70,6 @@
       </div>
       <h2 class="missed-title" id="missed-title" hidden>這幾位你還沒答對</h2>
       <ul class="missed" id="missed"></ul>
-      <footer class="foot">
-        <button class="link" data-open="credits">照片授權與資料來源</button>
-      </footer>
     </section>
 
     <!-- 授權說明 -->
@@ -87,6 +80,12 @@
       <p>縣市界線：內政部國土測繪中心「直轄市、縣(市)界線」，依政府資料開放授權條款第 1 版使用，經 <a href="https://github.com/dkaoster/taiwan-atlas" target="_blank" rel="noopener">taiwan-atlas</a> 轉檔與簡化。候選人名單依各縣市選舉委員會登記資料，以中選會公告為準。</p>
       <ul class="credits" id="credits"></ul>
     </section>
+
+    <!-- 共用 footer：遊戲中與授權頁不顯示（見 .foot 的 data-screen 規則） -->
+    <footer class="foot">
+      <button class="link" data-open="credits">照片授權與資料來源</button>
+      <p class="disclaimer">by <a href="https://www.threads.com/@yuuki.twjp" target="_blank" rel="noopener">@yuuki.twjp</a> · 本遊戲為非營利趣味測驗，與任何政黨、候選人無關，不構成任何支持或反對之表示。</p>
+    </footer>
   </main>
   <div class="toast" id="toast" role="status"></div>
   <script type="module" src="src/main.js"></script>
