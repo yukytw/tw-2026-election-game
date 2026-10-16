@@ -20,7 +20,7 @@ const regionOf = (c) => Object.keys(REGIONS).find((r) => REGIONS[r].includes(c))
 const ALL_COUNTIES = Object.values(REGIONS).flat();
 
 const RANKS = [
-  [0, "政治冷感族"],
+  [0, "初次見面"],
   [3, "新聞路過的路人"],
   [6, "選情觀察家"],
   [10, "政論節目常客"],
@@ -29,7 +29,8 @@ const RANKS = [
 ];
 
 const SHARE_LINES = [
-  [0, (n) => `只答對 ${n} 題，也太難了吧`],
+  [0, () => "一題都沒對，也太難了吧"],
+  [1, (n) => `只答對 ${n} 題，也太難了吧`],
   [6, (n) => `答對 ${n} 題，有人要挑戰嗎`],
   [11, (n) => `答對 ${n} 題，有人贏得了嗎`],
 ];
@@ -150,11 +151,12 @@ function nextQuestion() {
   const box = $("choices");
   box.classList.remove("revealed");
   box.innerHTML = "";
-  for (const county of pickOptions(c.county, state.correct)) {
+  for (const [i, county] of pickOptions(c.county, state.correct).entries()) {
     const btn = document.createElement("button");
     btn.className = "choice";
     btn.dataset.county = county;
-    btn.setAttribute("aria-label", "縣市輪廓選項");
+    // Naming the county here would give the answer away, so options are only numbered.
+    btn.setAttribute("aria-label", `選項 ${i + 1}`);
     btn.innerHTML = `${countySvg(county)}<span class="name">${county}</span>`;
     btn.addEventListener("click", () => answer(btn));
     box.appendChild(btn);
