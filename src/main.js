@@ -253,21 +253,17 @@ function finish() {
   const url = shareUrl();
   const enc = encodeURIComponent;
   $("share-line").href = `https://social-plugins.line.me/lineit/share?url=${enc(url)}&text=${enc(text)}`;
-  $("share-fb").href = `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`;
-  $("share-threads").href = `https://www.threads.net/intent/post?text=${enc(`${text} ${url}`)}`;
 
   show("result");
-  prepareImages();
+  prepareImage();
 }
 
 // ---------- share image ----------
 
-// story = 9:16 for Instagram Stories; otherwise the 4:5 feed card. Layout is drawn for
-// 1350px and centred vertically, so the story version keeps clear of Instagram's top/bottom UI.
-function drawResultImage(story = false) {
-  const W = 1080, H = story ? 1920 : 1350;
+function drawResultImage() {
+  const W = 1080, H = 1350;
   // +55 keeps the block optically centred now that nothing is drawn below the stats line.
-  const dy = (H - 1350) / 2 + 55;
+  const dy = 55;
   const cv = document.createElement("canvas");
   cv.width = W;
   cv.height = H;
@@ -278,7 +274,7 @@ function drawResultImage(story = false) {
   g.fillRect(0, 0, W, H);
 
   // A faint scatter of county outlines as backdrop.
-  const counties = sample(ALL_COUNTIES, story ? 12 : 9);
+  const counties = sample(ALL_COUNTIES, 9);
   g.fillStyle = "rgba(255,255,255,0.06)";
   counties.forEach((c, i) => {
     g.save();
@@ -327,14 +323,12 @@ function toast(msg) {
 
 // Rendered as soon as the result screen shows: Safari drops the user-gesture permission if we
 // start drawing only after the tap and then call navigator.share.
-function prepareImages() {
-  state.blobs = null;
-  Promise.all([drawResultImage(false), drawResultImage(true)]).then(([post, story]) => {
-    state.blobs = { post, story };
-  });
+function prepareImage() {
+  state.blob = null;
+  drawResultImage().then((blob) => { state.blob = blob; });
 }
 
-const imageBlob = async (kind) => state.blobs?.[kind] ?? drawResultImage(kind === "story");
+const imageBlob = async () => state.blob ?? drawResultImage();
 
 function saveBlob(blob, name) {
   const a = document.createElement("a");
@@ -343,8 +337,6 @@ function saveBlob(blob, name) {
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
-
-const isMobile = () => /Android|iPhone|iPad/i.test(navigator.userAgent);
 
 // Sharing a file needs the system share sheet, which browsers only expose on HTTPS (or localhost).
 async function shareFile(blob, name, extra = {}) {
@@ -361,7 +353,7 @@ async function shareFile(blob, name, extra = {}) {
 async function share() {
   const text = shareText();
   const url = shareUrl();
-  const blob = await imageBlob("post");
+  const blob = await imageBlob();
   if (await shareFile(blob, "result.png", { text: `${text} ${url}` })) return;
   try {
     if (navigator.share) {
@@ -380,24 +372,8 @@ async function share() {
   }
 }
 
-async function shareInstagramStory() {
-  const blob = await imageBlob("story");
-  // On a phone the share sheet lists Instagram → Stories, with the picture attached.
-  // (Must pass text alongside the file — iOS Safari can silently fail navigator.share
-  // when given files with nothing else.)
-  if (await shareFile(blob, "result-story.png", { text: shareText() })) return;
-  // Otherwise save it and, on a phone, open the Instagram story camera to pick it from the gallery.
-  saveBlob(blob, `這誰選哪-${state.correct}題-限動.png`);
-  if (isMobile()) {
-    toast("圖片已儲存，到 Instagram 新增限時動態並選這張圖");
-    setTimeout(() => { location.href = "instagram://story-camera"; }, 1500);
-  } else {
-    toast("圖片已儲存，上傳到 Instagram 限時動態即可");
-  }
-}
-
 async function downloadImage() {
-  saveBlob(await imageBlob("post"), `這誰選哪-${state.correct}題.png`);
+  saveBlob(await imageBlob(), `這誰選哪-${state.correct}題.png`);
 }
 
 // ---------- credits ----------
@@ -429,7 +405,6 @@ $("btn-start").addEventListener("click", start);
 $("btn-again").addEventListener("click", start);
 $("btn-share").addEventListener("click", share);
 $("share-img").addEventListener("click", downloadImage);
-$("share-ig").addEventListener("click", shareInstagramStory);
 
 const best = Number(storage.get("best") || 0);
 if (best > 0) {

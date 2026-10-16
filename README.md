@@ -44,7 +44,13 @@ python3 -m http.server 8000   # 本機預覽 http://localhost:8000
 
 ## 分享的限制
 
-- **附圖只有「分享成績」和「Instagram 限時動態」能做到**，靠的是手機的系統分享選單（Web Share API）。LINE／Facebook／Threads 的網頁分享連結只能帶文字和網址，平台沒有開放帶圖的參數；貼出的連結預覽圖來自 `og.png`。
-- 系統分享選單**只在 HTTPS（或 localhost）下存在**。用 `http://192.168.x.x` 在手機上測試時，這兩顆按鈕會退回成「存圖」；要驗證附圖分享必須部署到 HTTPS，或用隧道（例如 `cloudflared tunnel --url http://localhost:8000`）。
-- Facebook／LINE 會去抓分享的網址；區網或 localhost 網址抓不到，只有公開網址才會正常。
+- 分享只有三顆按鈕：「分享成績」（系統分享選單，唯一能帶成績圖的）、LINE、「下載成績圖」。
+- **附圖只有「分享成績」能做到**，靠的是手機的系統分享選單（Web Share API）。LINE 的網頁分享連結只能帶文字和網址，平台沒有開放帶圖的參數；貼出的連結預覽圖來自 `og.png`。
+- 這兩種分享不重疊，所以都留著：附圖分享用來炫耀成績，但對方收到的是一張點不進來的照片；LINE 連結分享會產生可點的連結預覽卡，才是把新玩家帶進來的那條路。
+- 系統分享選單**只在 HTTPS（或 localhost）下存在**。用 `http://192.168.x.x` 在手機上測試時，「分享成績」會退回成複製文字或存圖；要驗證附圖分享必須部署到 HTTPS，或用隧道（例如 `cloudflared tunnel --url http://localhost:8000`）。
+- LINE 會去抓分享的網址；區網或 localhost 網址抓不到，只有公開網址才會正常。
+- 拿掉過 Facebook、Instagram 限時動態、Threads 三顆按鈕，別再加回來：
+  - Facebook 自 2018 年起就把 `sharer.php` 的 `quote` 預填文字拿掉（防濫用），在手機上還會被 app 的 universal link 接走、落到不固定的頁面。
+  - Instagram：Web Share 交出去的檔案不會出現「限時動態」這個目標，要直接開限動編輯器得用 `instagram-stories://share` + pasteboard，需要原生 app 與註冊的 Facebook App ID。
+  - Threads：intent 只吃 `text`，成績圖帶不過去，貼出來只有 `og.png` 的通用連結卡，在動態牆上偏單薄。想帶成績圖的人用系統分享選單選 Threads 反而可行。
 
