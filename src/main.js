@@ -377,7 +377,9 @@ async function share() {
 async function shareInstagramStory() {
   const blob = await imageBlob("story");
   // On a phone the share sheet lists Instagram → Stories, with the picture attached.
-  if (await shareFile(blob, "result-story.png")) return;
+  // (Must pass text alongside the file — iOS Safari can silently fail navigator.share
+  // when given files with nothing else.)
+  if (await shareFile(blob, "result-story.png", { text: shareText() })) return;
   // Otherwise save it and, on a phone, open the Instagram story camera to pick it from the gallery.
   saveBlob(blob, `這誰選哪-${state.correct}題-限動.png`);
   if (isMobile()) {
