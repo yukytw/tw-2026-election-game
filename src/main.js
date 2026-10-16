@@ -7,7 +7,6 @@ const COMBO_STEP = 5;
 const COMBO_BONUS_MS = 3_000;
 const REVEAL_OK_MS = 450;
 const REVEAL_BAD_MS = 1_000;
-const HASHTAG = "#這誰選哪";
 
 // Distractors get harder as the player warms up: more of them come from the same region.
 const REGIONS = {
@@ -27,6 +26,12 @@ const RANKS = [
   [10, "政論節目常客"],
   [15, "選舉宅神"],
   [20, "人肉中選會"],
+];
+
+const SHARE_LINES = [
+  [0, (n) => `只答對 ${n} 題，也太難了吧`],
+  [6, (n) => `答對 ${n} 題，有人要挑戰嗎`],
+  [11, (n) => `答對 ${n} 題，有人贏得了嗎`],
 ];
 
 const $ = (id) => document.getElementById(id);
@@ -216,7 +221,7 @@ function rankFor(score) {
 }
 
 function shareText() {
-  return `「這誰？選哪？」60 秒挑戰，我認出 ${state.correct} 位 2026 縣市長候選人，還說出他們選哪裡！稱號「${rankFor(state.correct)}」。你能贏我嗎？ ${HASHTAG}`;
+  return SHARE_LINES.filter(([min]) => state.correct >= min).at(-1)[1](state.correct);
 }
 
 function shareUrl() {
@@ -259,7 +264,8 @@ function finish() {
 // 1350px and centred vertically, so the story version keeps clear of Instagram's top/bottom UI.
 function drawResultImage(story = false) {
   const W = 1080, H = story ? 1920 : 1350;
-  const dy = (H - 1350) / 2;
+  // +55 keeps the block optically centred now that nothing is drawn below the stats line.
+  const dy = (H - 1350) / 2 + 55;
   const cv = document.createElement("canvas");
   cv.width = W;
   cv.height = H;
@@ -305,8 +311,6 @@ function drawResultImage(story = false) {
   g.fillStyle = "rgba(255,255,255,.75)";
   g.font = font(600, 36);
   g.fillText(`最高 ${state.maxCombo} 連擊 · 共答 ${state.total} 題`, W / 2, 1110);
-  g.font = font(700, 38);
-  g.fillText("你能贏我嗎？👉 " + location.host, W / 2, 1240);
 
   return new Promise((r) => cv.toBlob(r, "image/png"));
 }
