@@ -126,6 +126,8 @@
   "file": "File:南投縣長許淑華.jpg",
   "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=579&_PARENT_ID=MYR11201ME0001&_TYP=MYR",
   "approve": true,
+  "crop": [0.5, 0.44, 1.2],
+  "pad": true,
   "license": "政府資料開放授權條款第1版",
   "licenseUrl": "https://data.gov.tw/license",
   "note": "GWOIA：內政部官網肖像"
