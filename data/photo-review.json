@@ -1,0 +1,378 @@
+{
+ "沈伯洋": {
+  "file": "File:Puma Shen 2024.jpg",
+  "source": "https://www.ly.gov.tw/Images/Legislators/110022.jpg",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LYWOIA：立法院官網肖像"
+ },
+ "唐新民": {
+  "file": "File:唐新民肖像.jpg",
+  "source": "https://bulletin.cec.gov.tw/01%E9%81%B8%E8%88%89%E5%85%AC%E5%A0%B1/03%E7%9B%B4%E8%BD%84%E5%B8%82%E9%95%B7/111%E5%B9%B4/%E8%87%BA%E5%8C%97%E5%B8%82%E5%B8%82%E9%95%B7.pdf",
+  "approve": false,
+  "note": "選舉公報照片，由候選人提供，開放宣告未必涵蓋"
+ },
+ "蔣萬安": {
+  "file": "File:蔣萬安市長 (cropped).jpg",
+  "source": "{{extracted",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：臺北市政府官網肖像"
+ },
+ "李四川": {
+  "file": "File:Lee Shu-chuan 2023.jpg",
+  "source": "https://www.gov.taipei/News_Content.aspx?n=2044902FC839D045&sms=72544237BBE4C5F6&s=C31B3642016D2266",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：臺北市政府官網肖像",
+  "tier": "minor"
+ },
+ "張善政": {
+  "file": "File:桃園市長張善政.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=578&_PARENT_ID=MYR11112HD0001&_TYP=MYR",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：中華民國內政部官網肖像"
+ },
+ "何欣純": {
+  "file": "File:第十一屆立法委員何欣純肖像.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：立法院全球資訊網官網肖像"
+ },
+ "謝龍介": {
+  "file": "File:謝龍介肖像.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：立法院全球資訊網官網肖像"
+ },
+ "柯志恩": {
+  "file": "File:柯志恩肖像.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：立法院全球資訊網官網肖像",
+  "pad": true,
+  "sourceFile": "data/manual-crops/originals/柯志恩.jpg",
+  "crop": [
+   0.494,
+   0.43,
+   1.2
+  ]
+ },
+ "謝國樑": {
+  "file": "File:謝國樑市長.jpg",
+  "source": "https://www.klcg.gov.tw/tw/klcg1/3176.html",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：​基隆市政府官網肖像"
+ },
+ "童子瑋": {
+  "file": "File:童子瑋議長.jpg",
+  "source": "{{extracted",
+  "approve": true,
+  "note": "CC BY-SA 4.0，作者 CHENGYITERRYLiN",
+  "tier": "minor"
+ },
+ "高虹安": {
+  "file": "File:新竹市長高虹安.jpg",
+  "source": "https://www.hccg.gov.tw/ch/home.jsp?id=9&parentpath=0,7",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：新竹市政府官網肖像"
+ },
+ "何志勇": {
+  "file": "File:S 104292389.jpg",
+  "source": "{{own}}",
+  "approve": false,
+  "note": "檔名像轉貼新聞／社群照片，來源存疑"
+ },
+ "鄭朝方": {
+  "file": "File:竹北市市長鄭朝方.jpg",
+  "source": "{{own}}",
+  "approve": true,
+  "note": "CC BY-SA 4.0，作者 Kevin91406039",
+  "tier": "minor"
+ },
+ "陳品安": {
+  "file": "File:陳品安議員.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=574&_PARENT_ID=ER11112KB00013&_TYP=REP&TYP=KND0002",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：內政部官網肖像",
+  "tier": "minor"
+ },
+ "鍾東錦": {
+  "file": "File:Chung Tung-chin.jpg",
+  "source": "https://www.miaoli.gov.tw/cp.aspx?n=265",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：苗栗縣政府官網肖像"
+ },
+ "許淑華": {
+  "file": "File:南投縣長許淑華.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=579&_PARENT_ID=MYR11201ME0001&_TYP=MYR",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：內政部官網肖像"
+ },
+ "張嘉郡": {
+  "file": "File:張嘉郡2024 03.jpg",
+  "source": "Uploaded",
+  "approve": true,
+  "note": "CC0，作者 張嘉郡"
+ },
+ "劉建國": {
+  "file": "File:Liu Chien-Kuo - by Huang Kuan-Ju 03 (cropped).JPG",
+  "source": "{{own}}",
+  "approve": true,
+  "note": "CC BY-SA 4.0，作者 Kuan-Ju Huang"
+ },
+ "黃宏成": {
+  "file": "File:黃宏成台灣阿成世界偉人 嘉義新住民問政座談會 2014.11.16.jpg",
+  "source": "https://youtube.com/watch?v=PQGBouTramo&t=143s",
+  "approve": true,
+  "note": "CC BY 3.0，作者 公民行動影音（civilmediatw）via 陳庭旭",
+  "crop": [
+   0.6,
+   0.25,
+   0.6
+  ],
+  "tier": "minor"
+ },
+ "張啓楷": {
+  "file": "File:張啓楷肖像.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：立法院全球資訊網官網肖像",
+  "pad": true,
+  "sourceFile": "data/manual-crops/originals/張啓楷.jpg",
+  "crop": [
+   0.478,
+   0.452,
+   1.25
+  ]
+ },
+ "蘇清泉": {
+  "file": "File:蘇清泉肖像.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：立法院全球資訊網官網肖像"
+ },
+ "周春米": {
+  "file": "File:周春米縣長.jpg",
+  "source": "https://idipc.pthg.gov.tw/en/images/head.jpg",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：屏東縣政府官網肖像"
+ },
+ "吳宗憲": {
+  "file": "File:吳宗憲肖像.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：立法院全球資訊網官網肖像"
+ },
+ "魏嘉賢": {
+  "file": "File:魏嘉賢議員.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=574&_PARENT_ID=ER11112UB00001&_TYP=REP&TYP=KND0002",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：內政部官網肖像",
+  "tier": "minor"
+ },
+ "葉竹林": {
+  "file": "File:2018 葉竹林.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial.aspx?n=580&TYP=KND0006&_QUERY=ea838027-538f-4872-aace-b50664243dc1",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：內政部地方公職人員資訊專區官網肖像",
+  "tier": "minor"
+ },
+ "梁文韜": {
+  "file": "File:梁文韜(cropped).jpg",
+  "source": "https://commons.wikimedia.org/w/index.php?search=%E6%A2%81%E6%96%87%E9%9F%9C&title=Special%253AMediaSearch&wprov=acrw1_-1&type=image",
+  "approve": false,
+  "note": "畫面是醬油廣告（手持商品），疑似翻拍他人廣告，CC BY-SA 自稱自攝存疑"
+ },
+ "蘇巧慧": {
+  "file": "File:蘇巧慧委員.jpg",
+  "source": "https://www.ly.gov.tw/EngPages/List.aspx?nodeid=55239",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "江啟臣": {
+  "file": "File:江啟臣委員.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "陳亭妃": {
+  "file": "File:陳亭妃委員.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=38347",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "賴瑞隆": {
+  "file": "File:立法委員賴瑞隆.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=1910",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "莊競程": {
+  "file": "File:立法委員莊競程.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37075#",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：中華民國立法院官網肖像",
+  "tier": "minor"
+ },
+ "徐欣瑩": {
+  "file": "File:徐欣瑩委員.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=46797",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "陳素月": {
+  "file": "File:立法委員陳素月.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=46818",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "王美惠": {
+  "file": "File:立法委員 王美惠.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=37167",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：中華民國立法院官網肖像"
+ },
+ "蔡易餘": {
+  "file": "File:立法委員蔡易餘.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=46843",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "陳瑩": {
+  "file": "File:陳瑩委員 1.jpg",
+  "source": "https://www.ly.gov.tw/EngPages/List.aspx?nodeid=1626",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "周倪安": {
+  "file": "File:周倪安委員.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=1802",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "陳玉珍": {
+  "file": "File:陳玉珍委員 2.jpg",
+  "source": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=46813",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "LY-GWOIA：立法院官網肖像"
+ },
+ "黃世杰": {
+  "file": "(立法院官網)",
+  "source": "https://www.ly.gov.tw/Images/Legislators/100075.jpg",
+  "approve": true,
+  "license": "立法院網站資料開放宣告",
+  "licenseUrl": "https://www.ly.gov.tw/Pages/List.aspx?nodeid=10772",
+  "author": "立法院",
+  "note": "第10屆立委官方肖像，直接取自立法院官網；依立法院網站資料開放宣告（可改作、須註明出處）"
+ },
+ "溫世政": {
+  "file": "File:溫世政 2026 1.jpg",
+  "source": "{{extracted",
+  "approve": true,
+  "note": "CC BY 4.0，作者 總統府",
+  "tier": "minor"
+ },
+ "陳振中": {
+  "file": "File:澎湖縣第19屆議員：陳振中.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=574&_PARENT_ID=ER10712XB00011&_TYP=REP",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：中華民國內政部官網肖像",
+  "tier": "minor"
+ },
+ "王忠銘": {
+  "file": "File:王忠銘.jpg",
+  "source": "https://www.moi.gov.tw/LocalOfficial_Content.aspx?n=579&_PARENT_ID=MYR11112ZE0001&_TYP=MYR",
+  "approve": true,
+  "license": "政府資料開放授權條款第1版",
+  "licenseUrl": "https://data.gov.tw/license",
+  "note": "GWOIA：內政部官網肖像"
+ },
+ "吳秀華": {
+  "file": "(內政部官網)",
+  "source": "https://ws.moi.gov.tw/001/Upload/localofficial/urllink/780e7265-2ed0-4812-bf22-23e8a66a96d3.jpg",
+  "approve": true,
+  "license": "內政部網站資料開放宣告",
+  "licenseUrl": "https://www.moi.gov.tw/cp.aspx?n=10954",
+  "author": "內政部",
+  "note": "內政部地方公職人員資訊專區臺東縣議員官方肖像；依內政部網站資料開放宣告（可改作、須註明出處）",
+  "sourceFile": "data/manual-crops/originals/吳秀華.jpg",
+  "tier": "minor"
+ },
+ "游淑貞": {
+  "file": "(內政部官網)",
+  "source": "https://ws.moi.gov.tw/001/Upload/localofficial/urllink/fde56706-6feb-4da4-aea1-13a5460c1b71.png",
+  "approve": true,
+  "license": "內政部網站資料開放宣告",
+  "licenseUrl": "https://www.moi.gov.tw/cp.aspx?n=10954",
+  "author": "內政部",
+  "note": "內政部地方公職人員資訊專區花蓮縣吉安鄉長官方肖像；原圖僅164x227，放大後偏軟",
+  "sourceFile": "data/manual-crops/originals/游淑貞.png",
+  "pad": true,
+  "crop": [
+   0.483,
+   0.31,
+   0.99
+  ],
+  "tier": "minor"
+ }
+}
