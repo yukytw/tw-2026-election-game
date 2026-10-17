@@ -5,6 +5,7 @@ const GAME_MS = 60_000;
 // Every COMBO_STEP correct answers in a row buys COMBO_BONUS_MS more time.
 const COMBO_STEP = 5;
 const COMBO_BONUS_MS = 3_000;
+const WRONG_PENALTY_MS = 2_000;
 const REVEAL_OK_MS = 450;
 const REVEAL_BAD_MS = 1_000;
 
@@ -166,6 +167,15 @@ function nextQuestion() {
   state.locked = false;
 }
 
+function flashClock(text, bad) {
+  const el = $("bonus");
+  el.textContent = text;
+  el.classList.toggle("bad", bad);
+  el.classList.remove("show");
+  void el.offsetWidth;
+  el.classList.add("show");
+}
+
 function answer(btn) {
   if (state.locked || state.over) return;
   state.locked = true;
@@ -190,10 +200,7 @@ function answer(btn) {
     comboEl.classList.add("pop");
     if (state.combo % COMBO_STEP === 0) {
       state.endAt += COMBO_BONUS_MS;
-      const bonus = $("bonus");
-      bonus.classList.remove("show");
-      void bonus.offsetWidth;
-      bonus.classList.add("show");
+      flashClock(`+${COMBO_BONUS_MS / 1000} 秒`, false);
     }
     navigator.vibrate?.(15);
   } else {
@@ -201,6 +208,9 @@ function answer(btn) {
     state.combo = 0;
     $("hud-combo").textContent = "";
     state.missed.push(c);
+    // Without a cost, guessing through all four options beats thinking.
+    state.endAt -= WRONG_PENALTY_MS;
+    flashClock(`−${WRONG_PENALTY_MS / 1000} 秒`, true);
     navigator.vibrate?.([30, 40, 30]);
   }
 
