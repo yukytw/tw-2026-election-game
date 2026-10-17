@@ -227,7 +227,7 @@ function shareText() {
   // Named here because the text-only shares (LINE, and every fallback) carry no image to say what
   // the score is even about.
   const line = SHARE_LINES.filter(([min]) => state.correct >= min).at(-1)[1](state.correct);
-  return `候選人臉與地圖配對\n${line}`;
+  return `候選人與縣市地圖配對\n${line}`;
 }
 
 function shareUrl() {
