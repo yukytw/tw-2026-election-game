@@ -253,7 +253,8 @@ function finish() {
   const text = shareText();
   const url = shareUrl();
   const enc = encodeURIComponent;
-  $("share-line").href = `https://social-plugins.line.me/lineit/share?url=${enc(url)}&text=${enc(text)}`;
+  // line.me/R/share opens the app directly on a phone; the lineit plugin demands a web login first.
+  $("share-line").href = `https://line.me/R/share?text=${enc(`${text} ${url}`)}`;
 
   show("result");
   prepareImage();
