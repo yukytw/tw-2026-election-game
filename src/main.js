@@ -108,6 +108,7 @@ export function makeDraw() {
 }
 
 function start() {
+  if (location.search) history.replaceState(null, "", location.pathname);
   const draw = makeDraw();
   state = {
     draw,
@@ -234,12 +235,28 @@ function shareUrl() {
   return location.origin + location.pathname;
 }
 
-function finish() {
-  state.over = true;
-  const best = Number(storage.get("best") || 0);
-  const isBest = state.correct > best;
-  if (isBest) storage.set("best", String(state.correct));
+// The result rides in the address bar so that "open in Safari/Chrome" from an in-app browser lands
+// back on the score instead of the start screen. Share links stay clean — shareUrl() drops the
+// query on purpose, so nobody else opens the game onto someone else's result.
+// Two base36 digits per value, no separators, so it reads as one opaque token.
+function encodeResult() {
+  const missed = [...new Map(state.missed.map((c) => [c.name, c])).values()];
+  return [state.correct, state.total, state.maxCombo, ...missed.map((c) => CANDIDATES.indexOf(c))]
+    .filter((n) => n >= 0)
+    .map((n) => n.toString(36).padStart(2, "0"))
+    .join("");
+}
 
+function decodeResult(s) {
+  if (!/^[0-9a-z]+$/.test(s) || s.length < 6 || s.length % 2) return null;
+  const n = s.match(/../g).map((p) => parseInt(p, 36));
+  const [correct, total, maxCombo] = n;
+  if (correct > total || maxCombo > total || total > 999) return null;
+  // Indices shift whenever the question pool is rebuilt, so drop any that no longer resolve.
+  return { correct, total, maxCombo, missed: n.slice(3).map((i) => CANDIDATES[i]).filter(Boolean), over: true };
+}
+
+function renderResult(isBest) {
   $("r-score").textContent = state.correct;
   $("r-rank").textContent = `「${rankFor(state.correct)}」`;
   $("r-correct").textContent = state.correct;
@@ -261,6 +278,15 @@ function finish() {
 
   show("result");
   prepareImage();
+}
+
+function finish() {
+  state.over = true;
+  const best = Number(storage.get("best") || 0);
+  const isBest = state.correct > best;
+  if (isBest) storage.set("best", String(state.correct));
+  history.replaceState(null, "", `?r=${encodeResult()}`);
+  renderResult(isBest);
 }
 
 // ---------- share image ----------
@@ -472,3 +498,14 @@ if (best > 0) {
 }
 renderCredits();
 preload(CANDIDATES[0]);
+
+const saved = new URLSearchParams(location.search).get("r");
+if (saved) {
+  const restored = decodeResult(saved);
+  if (restored) {
+    state = restored;
+    renderResult(false); // reopening a link must not claim a new record
+  } else {
+    history.replaceState(null, "", location.pathname);
+  }
+}
