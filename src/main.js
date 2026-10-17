@@ -336,27 +336,58 @@ function saveBlob(blob, name) {
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = name;
+  // Firefox ignores click() on an element that is not in the document; Chrome and Safari do not.
+  document.body.appendChild(a);
   a.click();
+  a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
 // Sharing a file needs the system share sheet, which browsers only expose on HTTPS (or localhost).
+// Everything is inside the try: an in-app browser without File or canShare would otherwise throw
+// past the caller and leave the button looking dead.
 async function shareFile(blob, name, extra = {}) {
-  const file = new File([blob], name, { type: "image/png" });
-  if (!navigator.canShare?.({ files: [file] })) return false;
   try {
+    const file = new File([blob], name, { type: "image/png" });
+    if (!navigator.canShare?.({ files: [file] })) return false;
     await navigator.share({ files: [file], ...extra });
   } catch (e) {
-    if (e?.name !== "AbortError") return false;
+    return e?.name === "AbortError"; // cancelling counts as handled; anything else falls through
   }
   return true;
+}
+
+// navigator.clipboard is missing in most in-app browsers, so fall back to the old textarea trick.
+async function copyText(s) {
+  try {
+    await navigator.clipboard.writeText(s);
+    return true;
+  } catch {}
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = s;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand("copy");
+    ta.remove();
+    return ok;
+  } catch {
+    return false;
+  }
 }
 
 async function share() {
   const text = shareText();
   const url = shareUrl();
-  const blob = await imageBlob();
-  if (await shareFile(blob, "result.png", { text: `${text} ${url}` })) return;
+  const payload = `${text} ${url}`;
+  let blob = null;
+  try {
+    blob = await imageBlob();
+  } catch {}
+
+  if (blob && await shareFile(blob, "result.png", { text: payload })) return;
   try {
     if (navigator.share) {
       await navigator.share({ text, url });
@@ -365,13 +396,12 @@ async function share() {
   } catch (e) {
     if (e?.name === "AbortError") return;
   }
-  try {
-    await navigator.clipboard.writeText(`${text} ${url}`);
-    toast("已複製分享文字，貼到任何地方吧！");
-  } catch {
+  if (await copyText(payload)) return toast("已複製分享文字，貼到任何地方吧！");
+  if (blob) {
     saveBlob(blob, `這誰選哪-${state.correct}題.png`);
-    toast("已儲存成績圖，可以自己貼到社群");
+    return toast("已儲存成績圖，可以自己貼到社群");
   }
+  toast("請用選單在外部瀏覽器開啟，再分享一次");
 }
 
 async function downloadImage() {
