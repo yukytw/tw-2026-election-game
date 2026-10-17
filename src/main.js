@@ -29,10 +29,10 @@ const RANKS = [
 ];
 
 const SHARE_LINES = [
-  [0, () => "一題都沒對，也太難了吧"],
-  [1, (n) => `只答對 ${n} 題，也太難了吧`],
-  [6, (n) => `答對 ${n} 題，有人要挑戰嗎`],
-  [11, (n) => `答對 ${n} 題，有人贏得了嗎`],
+  [0, () => "我一題都沒對，也太難了吧"],
+  [1, (n) => `我只答對 ${n} 題，也太難了吧`],
+  [6, (n) => `我答對 ${n} 題，有人要挑戰嗎`],
+  [11, (n) => `我答對 ${n} 題，有人贏得了嗎`],
 ];
 
 const $ = (id) => document.getElementById(id);
@@ -224,7 +224,10 @@ function rankFor(score) {
 }
 
 function shareText() {
-  return SHARE_LINES.filter(([min]) => state.correct >= min).at(-1)[1](state.correct);
+  // Named here because the text-only shares (LINE, and every fallback) carry no image to say what
+  // the score is even about.
+  const line = SHARE_LINES.filter(([min]) => state.correct >= min).at(-1)[1](state.correct);
+  return `候選人臉與地圖配對\n${line}`;
 }
 
 function shareUrl() {
