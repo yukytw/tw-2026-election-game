@@ -338,20 +338,20 @@ const imageBlob = async () => state.blob ?? drawResultImage();
 const isMobile = () => /Android|iPhone|iPad/i.test(navigator.userAgent);
 
 // On a phone the picture is wanted in the camera roll, and long-pressing is the one route that
-// works everywhere — in-app browsers included, where downloads are silently dropped.
+// works everywhere — in-app browsers included, where downloads are silently dropped. The source
+// has to be a data URL: "save image" tends to come up empty on a blob inside an in-app browser.
 function showSaveSheet(blob) {
-  const img = $("save-img");
-  if (img.dataset.url) URL.revokeObjectURL(img.dataset.url);
-  img.dataset.url = img.src = URL.createObjectURL(blob);
-  $("save-sheet").hidden = false;
+  const r = new FileReader();
+  r.onload = () => {
+    $("save-img").src = r.result;
+    $("save-sheet").hidden = false;
+  };
+  r.readAsDataURL(blob);
 }
 
 function closeSaveSheet() {
-  const img = $("save-img");
   $("save-sheet").hidden = true;
-  if (img.dataset.url) URL.revokeObjectURL(img.dataset.url);
-  img.removeAttribute("src");
-  delete img.dataset.url;
+  $("save-img").removeAttribute("src");
 }
 
 function saveBlob(blob, name) {
