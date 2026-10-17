@@ -291,10 +291,12 @@ function finish() {
 
 // ---------- share image ----------
 
+// 9:16 so it fills an Instagram story edge to edge instead of letting Instagram pad it with a
+// background of its own. The layout is drawn for 1350px and centred in the taller canvas.
 function drawResultImage() {
-  const W = 1080, H = 1350;
+  const W = 1080, H = 1920;
   // +55 keeps the block optically centred now that nothing is drawn below the stats line.
-  const dy = 55;
+  const dy = (H - 1350) / 2 + 55;
   const cv = document.createElement("canvas");
   cv.width = W;
   cv.height = H;
@@ -305,7 +307,7 @@ function drawResultImage() {
   g.fillRect(0, 0, W, H);
 
   // A faint scatter of county outlines as backdrop.
-  const counties = sample(ALL_COUNTIES, 9);
+  const counties = sample(ALL_COUNTIES, 12);
   g.fillStyle = "rgba(255,255,255,0.06)";
   counties.forEach((c, i) => {
     g.save();
