@@ -87,6 +87,14 @@
       <p class="disclaimer">by <a href="https://www.threads.com/@yuuki.twjp" target="_blank" rel="noopener">@yuuki.twjp</a> · 本遊戲為非營利趣味測驗，與任何政黨、候選人無關，不構成任何支持或反對之表示。</p>
     </footer>
   </main>
+  <!-- In-app browsers support neither Web Share files nor blob downloads; long-press always works. -->
+  <div class="sheet" id="save-sheet" hidden>
+    <div class="sheet-inner">
+      <img id="save-img" alt="成績圖">
+      <p>長按圖片即可儲存</p>
+      <button class="btn" id="save-close">關閉</button>
+    </div>
+  </div>
   <div class="toast" id="toast" role="status"></div>
   <script type="module" src="src/main.js"></script>
 </body>

@@ -332,6 +332,25 @@ function prepareImage() {
 
 const imageBlob = async () => state.blob ?? drawResultImage();
 
+const isMobile = () => /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+// On a phone the picture is wanted in the camera roll, and long-pressing is the one route that
+// works everywhere — in-app browsers included, where downloads are silently dropped.
+function showSaveSheet(blob) {
+  const img = $("save-img");
+  if (img.dataset.url) URL.revokeObjectURL(img.dataset.url);
+  img.dataset.url = img.src = URL.createObjectURL(blob);
+  $("save-sheet").hidden = false;
+}
+
+function closeSaveSheet() {
+  const img = $("save-img");
+  $("save-sheet").hidden = true;
+  if (img.dataset.url) URL.revokeObjectURL(img.dataset.url);
+  img.removeAttribute("src");
+  delete img.dataset.url;
+}
+
 function saveBlob(blob, name) {
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
@@ -397,15 +416,18 @@ async function share() {
     if (e?.name === "AbortError") return;
   }
   if (await copyText(payload)) return toast("已複製分享文字，貼到任何地方吧！");
-  if (blob) {
-    saveBlob(blob, `這誰選哪-${state.correct}題.png`);
-    return toast("已儲存成績圖，可以自己貼到社群");
-  }
+  if (blob) return saveImage(blob);
   toast("請用選單在外部瀏覽器開啟，再分享一次");
 }
 
+function saveImage(blob) {
+  if (isMobile()) return showSaveSheet(blob);
+  saveBlob(blob, `這誰選哪-${state.correct}題.png`);
+  toast("已儲存成績圖");
+}
+
 async function downloadImage() {
-  saveBlob(await imageBlob(), `這誰選哪-${state.correct}題.png`);
+  saveImage(await imageBlob());
 }
 
 // ---------- credits ----------
@@ -437,6 +459,8 @@ $("btn-start").addEventListener("click", start);
 $("btn-again").addEventListener("click", start);
 $("btn-share").addEventListener("click", share);
 $("share-img").addEventListener("click", downloadImage);
+$("save-close").addEventListener("click", closeSaveSheet);
+$("save-sheet").addEventListener("click", (e) => { if (e.target === $("save-sheet")) closeSaveSheet(); });
 
 const best = Number(storage.get("best") || 0);
 if (best > 0) {
